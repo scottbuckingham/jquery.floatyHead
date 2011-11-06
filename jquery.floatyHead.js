@@ -25,10 +25,10 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-Author:			Scott Buckingham
-Website: 		http://www.scottbuckingham.com
-Release Date: 	2011-11-06
-Version: 		0.1
+Author: Scott Buckingham
+Website: http://www.scottbuckingham.com
+Release Date: 2011-11-06
+Version: 0.1
 Usage:
 	$('selector').floatyHead();
 */
