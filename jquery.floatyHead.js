@@ -30,7 +30,10 @@ Website: http://www.scottbuckingham.com
 Release Date: 2011-11-06
 Version: 0.1
 Usage:
-	$('selector').floatyHead();
+	$('selector').floatyHead(); // initializes the plugin
+	$('selector').floatyHead('update_sizes'); // needs to be called if the table changes height, or if columns change width
+Notes:
+	Tables need <thead> and <tbody> tags for this plugin to work
 */
 
 (function( $ ){
@@ -118,12 +121,3 @@ Usage:
 	};
 
 })( jQuery );
-
-
-
-
-		
-		
-		
-
-		
