@@ -60,20 +60,11 @@ Usage:
 			}
 			
 			$(window).bind('scroll.floatyHead', methods.update);
-			$(window).bind('resize.floatyHead', methods.update);
+			$(window).bind('resize.floatyHead', methods.update_sizes);
 			
 			return this.each(function() {
-				var Offset = $(this).offset();
-				
-				$(this).data('offset', Offset );
-				$(this).data('maxOffset', $(this).height() + Offset.top);
-				
-				$(this).find('thead th').each(function() {
-					var Width = $(this).css('width');
-					$(this).css('width', Width);
-				});
-				
-				$(this).clone(true).addClass('floatyHead').css('position', 'fixed').css('left', $(this).data('offset').left).css('top', $(this).data('offset').top).find('tbody').remove().end().appendTo('body');
+				$(this).addClass('floatyBase');
+				methods.update_sizes();
 			});
 			
 			
@@ -95,6 +86,24 @@ Usage:
 					$(this).hide();
 				}
 			});
+		},
+		
+		update_sizes: function() {
+			$('.floatyHead').remove();
+			$('.floatyBase').each(function(){
+				var Offset = $(this).offset();
+				$(this).data('offset', Offset );
+				$(this).data('maxOffset', $(this).height() + Offset.top);
+				
+				$(this).find('thead th').each(function() {
+					var Width = $(this).css('width');
+					$(this).css('width', Width);
+				});
+				
+				$(this).clone(true).removeClass('floatyBase').addClass('floatyHead').css('position', 'fixed').css('left', $(this).data('offset').left).css('top', $(this).data('offset').top).find('tbody').remove().end().appendTo('body');
+			});
+			
+			methods.update();
 		}
 	};
 
