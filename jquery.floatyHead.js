@@ -27,8 +27,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 Author: Scott Buckingham
 Website: http://www.scottbuckingham.com
-Release Date: 2011-11-06
-Version: 0.1
+Release Date: 2011-11-15
+Version: 0.2
 Usage:
 	$('selector').floatyHead(); // initializes the plugin
 	$('selector').floatyHead('update_sizes'); // needs to be called if the table changes height, or if columns change width
@@ -75,15 +75,20 @@ Notes:
 		
 		update: function() {
 			var ScrollTop = $(window).scrollTop();
+			var ScrollLeft = $(window).scrollLeft();
+			
 			$('.floatyHead').each(function() {
-				var Offset = $(this).data('offset').top;
+				var Offset = $(this).data('offset');
 				var MaxOffset = $(this).data('maxOffset');
 				
-				if( ScrollTop > Offset && ScrollTop < MaxOffset ) {
+				if( ScrollTop > Offset.top && ScrollTop < MaxOffset ) {
 					if( settings.positionFixed ) {
 						$(this).css('top', 0).show();
+						if( ScrollLeft != 0 ) {
+							$(this).css('left', -ScrollLeft + 'px');
+						}
 					} else {
-						$(this).css('position','absolute').css('top', ScrollTop + 'px').show();
+						$(this).css('position','absolute').css('top', ScrollTop + 'px').css('left', Offset.left + 'px').show();
 					}
 				} else {
 					$(this).hide();
